@@ -1,0 +1,26 @@
+Given a non-negative number represented as an array of digits, plus one to the number.
+
+The digits are stored such that the most significant digit is at the head of the list.
+
+给出一个数组，这个数组的每一元素代表这个十进制数的位数，如[3,4,5]代表345. 求加1后的结果，结果也以数组这种形式返回
+
+public class Solution {
+    public int[] plusOne(int[] digits) {
+        int length = digits.length;
+        int res = 1;
+        for(int i = 0; i < length; i++){
+            int sum = digits[length-1-i]+res;
+            digits[length-1-i] = sum%10 ;
+            res = sum/10;
+        }
+        if(res!=0){
+            int[] result = new int[length+1];
+            for(int i =0; i < length; i++){
+                result[i] = digits[i];
+            }
+            result[0] = res;
+            return result;
+        }
+        return digits;
+    }
+}
